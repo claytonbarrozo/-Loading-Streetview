@@ -58,6 +58,46 @@ function loadData() {
         });
         // <---- End of the error function --->
 
+
+        // <--- Wikipedia AJAX request goes here --->
+        
+
+        var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityStr + '&format=json&callback=wikiCallback';
+
+
+        // Error handlin with Jsonp
+        var wikiRequestTimeout = setTimeout(function(){
+            $wikiElem.text("failed to get wikipedia resources");
+        }, 8000);
+
+
+        $.ajax({ // ajax request object
+            url: wikiUrl, // setting url to wikiUrl from the top
+            dataType: "jsonp", // this indicates that this is a jsonp request
+            // jsonp: 'callback',
+            success: function( response ) { //when it runs we get the response
+                var articleList = response[1];
+
+                for (var i = 0; i < articleList.length; i++) {
+                    articleStr = articleList[i];
+                
+                var url ='http://en.wikipedia.org/wiki/' + articleStr;
+                $wikiElem.append('<li><a href="' + url + '">' + articleStr + '</a></li>'); // each article is appedn to the page
+            }
+            
+            // 
+            clearTimeout(wikiRequestTimeout);
+            
+            }
+
+
+        });
+
+
+
+
+
+        // <--- End of Wikipedia AJAX request goes here --->
 return false;
 
 }
