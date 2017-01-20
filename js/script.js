@@ -62,7 +62,7 @@ function loadData() {
         // <--- Wikipedia AJAX request goes here --->
         
 
-        var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityStr + '&format=json&callback=wikiCallback';
+        var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + address + '&format=json&callback=wikiCallback';
 
 
         // Error handlin with Jsonp
