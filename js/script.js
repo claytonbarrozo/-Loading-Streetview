@@ -32,7 +32,7 @@ function loadData() {
     //<--- End Gogole street view --->
 
     // <--- NYTimes AJAX request goes here --->
-    var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ cityStr + '&sort=newest&api-key=16298ba2aec24a4fb62ba3ab75ccf0ba';
+    var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ address + '&sort=newest&api-key=16298ba2aec24a4fb62ba3ab75ccf0ba';
         
         $.getJSON(nytimesUrl, function(data){ // this starts the json
 
