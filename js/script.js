@@ -67,7 +67,7 @@ function loadData() {
 
         // Error handlin with Jsonp
         var wikiRequestTimeout = setTimeout(function(){
-            $wikiElem.text("failed to get wikipedia resources");
+            $wikiElem.text("Failed to get wikipedia resources");
         }, 8000);
 
 
