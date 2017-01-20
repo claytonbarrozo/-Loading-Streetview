@@ -23,7 +23,7 @@ function loadData() {
     // .text means to add text to the page
     $greeting.text('So, you want to live at ' + address + '?');
 
-    var streetviewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + address + '';
+    var streetviewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + address + '';
     // append Insert content, specified by the parameter, to the end of each element in the set of matched elements.
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
     
