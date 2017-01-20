@@ -46,7 +46,12 @@ function loadData() {
     });
 
 
-}
 
+}
 $('#form-container').submit(loadData);
+
 return false;
+
+
+
+
