@@ -29,27 +29,36 @@ function loadData() {
     
 
 
-    // NYTimes AJAX request goes here
+    // <--- NYTimes AJAX request goes here --->
     var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ cityStr + '&sort=newest&api-key=16298ba2aec24a4fb62ba3ab75ccf0ba';
         
-        $.getJSON(nytimesUrl, function(data){
+        $.getJSON(nytimesUrl, function(data){ // this starts the json
 
-        $nytHeaderElem.text('New York Times Articles About ' + cityStr);
+        $nytHeaderElem.text('New York Times Articles About ' + cityStr); // this add the txt to the header
 
          articles = data.response.docs;
-            for (var i = 0; i < articles.length; i++) {
+            for (var i = 0; i < articles.length; i++) { // loops starts
             var article = articles[i];
             $nytElem.append('<li class="article">' + 
                 '<a href ="'+article.web_url+'">'+article.headline.main+
                 '</a>' + '<p>' + article.snippet + '</p>' +
                  '</li>');
             }
-    });
+    })
 
+        // <----- End NYTimes Function --->
+
+        // <----- Error Function --->
+        // Added .error function if the website is down the following msg will show New York Times Articles Error'
+        .error(function(e){ // this the error function
+            $nytHeaderElem.text('New York Times Articles Error'); // this code attaches the msg to nytHeaderElem if there no connection
+
+        });
+        // <---- End of the error function --->
 
 return false;
 
-};
+}
 
 $('#form-container').submit(loadData);
 
