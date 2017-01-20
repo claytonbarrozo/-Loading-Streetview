@@ -30,21 +30,22 @@ function loadData() {
 
 
     // NYTimes AJAX request goes here
-var nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='
- + cityStr + '&sort=newest&api-key=16298ba2aec24a4fb62ba3ab75ccf0ba';
-                $.getJSON(nytimesUrl, function (data){
+    var nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ cityStr + '&sort=newest&api-key=16298ba2aec24a4fb62ba3ab75ccf0ba';
+        
+        $.getJSON(nytimesUrl, function (data){
         $nytHeaderElem.text('New York Times Articles About' + cityStr);
 
         articles = data.response.docs;
-        for(var i = 0; i < articles.length; i++){
-        var article = articles[i];
-        $nytElem.append('<li class="article">' + 
-            '<a href ="'+article.web_url+'">'+article.headline.main+
-            '</a>'+'<p>' + article.snippet + '</p>' +
-             '</li>');
-        }
-        });
+            for(var i = 0; i < articles.length; i++){
+            var article = articles[i];
+            $nytElem.append('<li class="article-list">' + 
+                '<a href ="'+article.web_url+'">'+article.headline.main+
+                '</a>'+'<p>' + article.snippet + '</p>' +
+                 '</li>');
+            }
+    });
 
 
 }
+
 $('#form-container').submit(loadData);
